@@ -32,12 +32,14 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'account',
+    'images',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -137,3 +139,17 @@ EMAIL_USE_TLS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+AUTHENTICATION_BACKENDS = {
+    'social.backends.facebook.Facebook2OAuth2',
+    'social.backends.twitter.TwitterOAuth',
+
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+}
+
+SOCIAL_AUTH_FACEBOOK_KEY = '****'  # Facebook App Id
+SOCIAL_AUTH_FACEBOOK_SECRET = '*****'  # Facebook App Secret
+
+SOCIAL_AUTH_TWITTER_KEY = '*****'  # Twitter Consumer Key
+SOCIAL_AUTH_TWITTER_SECRET = '****'  # Twitter Consumer Secret
